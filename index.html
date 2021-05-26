@@ -8,15 +8,32 @@
   </head>
 
     <body>
-      <div id="form-container">
+
+      <!-- Search Bar -->
+      <div id="search-container">
         <form>
-            <button id="search-button" type="submit">New Sounds</button>
+            <input type="text" placeholder="Search.." name="search" id="search-bar">
+            <button id="search-button" type="submit">Search</button>
         </form>
       </div>
         
+        </select>
+      </div>
+      <!-- Polyphony -->
+      <div id="polyphony-container">
+          <select id="polyphony-options">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="8">8</option>
+          </select>
+      </div>
+
+      <!-- Main Text Area -->
         <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
         <audio autoplay id="player"></audio>
-        
     <script src="./assets/js/script.js"></script>
 
     </body>

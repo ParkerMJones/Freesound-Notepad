@@ -1,15 +1,21 @@
+// HTML Elements
 var notepad = document.getElementById("notepad");
 var searchTerm = document.getElementById("search-bar").value;
 
-var soundId = Math.floor(Math.random() * 500000);
-var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
-var alphabet = inputPossibilities.split(" ");
+var nameSoundset = document.getElementById("name-soundset");
+var saveButton = document.getElementById("save-button");
+var loadMenu = document.getElementById("load-menu");
 
 var player = document.getElementById("player");
 var polyphonyOptions = document.getElementById("polyphony-options");
 
+var savedSounds = [];
+var soundId = Math.floor(Math.random() * 500000);
+var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
+var alphabet = inputPossibilities.split(" ");
 
-// Event Listeners
+
+
 polyphonyOptions.addEventListener('change', function() {
   for (i=0; i < polyphonyOptions.value; i++) {
     var voice = document.createElement("audio");
@@ -17,6 +23,7 @@ polyphonyOptions.addEventListener('change', function() {
     console.log(voice.id);
   }
 })
+
 
 // main function
 var wholeThing = function() {
@@ -29,10 +36,12 @@ fetch(
   })
   .then(function(response) {
     console.log(response);
+    window.globalResponse = response;
    /* if (response === 404) {
-      location.reload();
+      console.log("There's a 404 here");
     }
     */
+
    
   notepad.addEventListener('input', (e) => {
       for (i=0; i < 47; i++) {
@@ -53,7 +62,28 @@ fetch(
       })
     })
   })
-}
+};
+
+
+saveButton.addEventListener('click', function(){
+  var soundsetSaveName = {
+  title: nameSoundset.value,
+  data: globalResponse
+ };
+  savedSounds.push(soundsetSaveName);
+  localStorage.setItem(soundsetSaveName.title, JSON.stringify(soundsetSaveName.data));
+  var loadItem = document.createElement("option");
+  loadItem.innerHTML = soundsetSaveName.title;
+  loadMenu.appendChild(loadItem);
+})
+
+
+loadMenu.addEventListener('change', function(){
+  localStorage.getItem(savedSounds);
+})
+
+
+
 
 wholeThing();
 

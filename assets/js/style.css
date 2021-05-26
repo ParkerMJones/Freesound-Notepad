@@ -8,12 +8,3 @@ html, body {
     color: rgba(255, 255, 255, 0.769);
     background-color: rgba(0, 0, 0, 0.803);
 }
-
-#form-container {
-    display: flex;
-}
-
-#search-bar {
-    display: flex;
-    padding: 5px;
-}

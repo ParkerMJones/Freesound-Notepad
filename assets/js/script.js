@@ -5,32 +5,33 @@ var searchTerm = document.getElementById("search-bar").value;
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu");
+var textAndAudio = document.getElementById("text-and-audio");
 
 var player = document.getElementById("player");
 var polyphonyOptions = document.getElementById("polyphony-options");
+var loopCheckbox = document.getElementById("loop-checkbox");
 
-var savedSounds = [];
+if(localStorage.getItem(savedSounds) == null){
+var savedSounds = []} else {
+  savedSounds = localStorage.getItem(savedSounds)
+};
+
 var soundId = Math.floor(Math.random() * 500000);
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
 var alphabet = inputPossibilities.split(" ");
 
-
-
+/*
 polyphonyOptions.addEventListener('change', function() {
-  for (i=0; i < polyphonyOptions.value; i++) {
-    var voice = document.createElement("audio");
-    voice.id = "player" + (i + 1);
-    console.log(voice.id);
-  }
+  console.log(polyphonyOptions.value);
 })
-
+*/
 
 // main function
 var wholeThing = function() {
   
 fetch(
-  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe'
-)
+  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC' /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+  )
   .then(function(response) {
     return response.json();
   })
@@ -43,25 +44,43 @@ fetch(
     */
 
    
-  notepad.addEventListener('input', (e) => {
+    notepad.addEventListener('input', (e) => {
       for (i=0; i < 47; i++) {
         if (alphabet[i].includes(e.data)) {
             window.iGlobal = i;
         }
       }
+        
     
-    fetch (
-    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
-    )
-      .then(function(soundThing) {
-        return soundThing.json();
-      })
-      .then(function(soundThing) {
-      console.log(soundThing.previews['preview-hq-mp3']);
-      player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+      fetch (
+      "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+      )
+        .then(function(soundThing) {
+          return soundThing.json();
+        })
+        .then(function(soundThing) {
+        console.log(soundThing.previews['preview-hq-mp3']);
+
+          for (j=0; j < polyphonyOptions.value; j++) {
+            var voice = document.createElement("audio");
+            voice.setAttribute("autoplay", true);
+            voice.classList.add('audioPlayer');
+            voice.id = "player" + (j + 1);
+            if (voice.getAttribute('src') == "") {
+              voice.setAttribute("src", soundThing.previews['preview-hq-mp3'])       
+            }
+            if (loopCheckbox.value === "loop") {
+              voice.setAttribute("loop", true);
+            }
+            else {
+              voice.setAttribute("loop", false);
+            }
+            textAndAudio.appendChild(voice);
+            console.log(voice.id + " : " + voice.getAttribute('src'));
+          }
+        })
       })
     })
-  })
 };
 
 
@@ -77,12 +96,9 @@ saveButton.addEventListener('click', function(){
   loadMenu.appendChild(loadItem);
 })
 
-
 loadMenu.addEventListener('change', function(){
   localStorage.getItem(savedSounds);
 })
-
-
 
 
 wholeThing();

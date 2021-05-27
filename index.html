@@ -19,6 +19,7 @@
         
         </select>
       </div>
+      
       <!-- Polyphony -->
       <div id="polyphony-container">
           <select id="polyphony-options">
@@ -31,9 +32,28 @@
           </select>
       </div>
 
+      <!-- Save / Load -->
+      <div id="save-container">
+        <input type="text" placeholder="Name Soundset" id="name-soundset">
+        <button id="save-button" type="button">Save</button>
+
+        <select id="load-menu">
+          <option selected disabled>Load Soundset</option>
+        </select>
+      </div>
+
+      <!-- Looping -->
+      <div id="checkbox-container">
+        <input type="checkbox" id="loop-checkbox" name="loop" value="loop">
+        <label for="loop">Loop Sounds</label>
+      </div>
+
       <!-- Main Text Area -->
+      <div id="text-and-audio">
         <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
-        <audio autoplay id="player"></audio>
+        <audio autoplay controls id="player"></audio>
+      </div>
+      
     <script src="./assets/js/script.js"></script>
 
     </body>

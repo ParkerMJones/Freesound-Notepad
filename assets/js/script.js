@@ -22,17 +22,20 @@ polyphonyOptions.addEventListener('change', function() {
 var wholeThing = function() {
   
 fetch(
-  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 2nd API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe */
+  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
 )
   .then(function(response) {
-    return response.json();
-  })
-  .then(function(response) {
     console.log(response);
-   /* if (response === 404) {
+    if (response.status === 404) {
       location.reload();
     }
-    */
+    return response.json();
+    
+  })
+    
+  .then(function(response) {
+    console.log(response);
+   
    
   notepad.addEventListener('input', (e) => {
       for (i=0; i < 47; i++) {
@@ -42,15 +45,14 @@ fetch(
       }
     
     fetch (
-    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe" /* 2nd API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe */
-    )
+    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe" /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
       .then(function(soundThing) {
         return soundThing.json();
       })
       .then(function(soundThing) {
       console.log(soundThing.previews['preview-hq-mp3']);
       player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
-      })
+      }))
     })
   })
 }

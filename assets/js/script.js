@@ -2,16 +2,21 @@
 var notepad = document.getElementById("notepad");
 var searchTerm = document.getElementById("search-bar").value;
 
+// save and load menu Element
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu");
-var textAndAudio = document.getElementById("text-and-audio");
 
+// Audio Player
 var player = document.getElementById("player");
-var polyphonyOptions = document.getElementById("polyphony-options");
-var loopCheckbox = document.getElementById("loop-checkbox");
-// var savedSounds = JSON.parse(localStorage.getItem('test')) || [];
 
+// Polyphony
+var polyphonyOptions = document.getElementById("polyphony-options");
+
+// loop checkbox
+var loopCheckbox = document.getElementById("loop-checkbox");
+
+// local storage stuff
 var savedSounds = JSON.parse(localStorage.getItem('savedSounds')) || [];
 if (savedSounds.length > 0) {
   savedSounds.forEach(option => {
@@ -21,21 +26,11 @@ if (savedSounds.length > 0) {
   });
 } 
 
-/* if(localStorage.getItem(savedSounds) == null){
-var savedSounds = []} else {
-  savedSounds = localStorage.getItem(savedSounds)
-};
-*/
 
 var soundId = Math.floor(Math.random() * 500000);
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
 var alphabet = inputPossibilities.split(" ");
 
-/*
-polyphonyOptions.addEventListener('change', function() {
-  console.log(polyphonyOptions.value);
-})
-*/
 
 // main function
 var wholeThing = function() {

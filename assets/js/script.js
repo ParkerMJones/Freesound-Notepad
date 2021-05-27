@@ -9,6 +9,7 @@ var loadMenu = document.getElementById("load-menu");
 
 // Audio Player
 var player = document.getElementById("player");
+var textAndAudioHandler = document.getElementById("text-and-audio");
 
 // Polyphony
 var polyphonyOptions = document.getElementById("polyphony-options");
@@ -72,14 +73,17 @@ fetch(
         .then(function(soundThing) {
         console.log(soundThing.previews['preview-hq-mp3']);
         
-        var player = document.createElement("audio");
-        player.setAttribute("autoplay", true);
-        player.setAttribute("controls", true);
-        if (loopCheckbox.value === true) {
-          player.setAttribute("loop");
-        }
-        player.setAttribute("src", soundThing.previews['preview-hq-mp3'])     
-      
+        if (counter <= polyphonyOptions.value) {
+          var player = document.createElement("audio");
+          player.setAttribute("id", counter);
+          player.autoplay = true;
+          player.controls = true;
+          if (loopCheckbox.checked === true) {
+            player.loop = true;
+          }
+          player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+          textAndAudioHandler.appendChild(player);
+          }
         })
       })
     })

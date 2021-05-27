@@ -61,15 +61,15 @@ fetch(
         .then(function(soundThing) {
         console.log(soundThing.previews['preview-hq-mp3']);
 
-          for (j=0; j < polyphonyOptions.value; j++) {
+        //  for (j=0; j < polyphonyOptions.value; j++) {
             var voice = document.createElement("audio");
             voice.setAttribute("autoplay", true);
             voice.classList.add('audioPlayer');
             voice.id = "player" + (j + 1);
-            if (voice.getAttribute('src') == "") {
+         //   if (voice.getAttribute('src') == "") {
               voice.setAttribute("src", soundThing.previews['preview-hq-mp3'])       
-            }
-            if (loopCheckbox.value === "loop") {
+        //    }
+         /*   if (loopCheckbox.value === "loop") {
               voice.setAttribute("loop", true);
             }
             else {
@@ -78,6 +78,7 @@ fetch(
             textAndAudio.appendChild(voice);
             console.log(voice.id + " : " + voice.getAttribute('src'));
           }
+        */
         })
       })
     })

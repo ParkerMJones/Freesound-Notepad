@@ -10,11 +10,22 @@ var textAndAudio = document.getElementById("text-and-audio");
 var player = document.getElementById("player");
 var polyphonyOptions = document.getElementById("polyphony-options");
 var loopCheckbox = document.getElementById("loop-checkbox");
+// var savedSounds = JSON.parse(localStorage.getItem('test')) || [];
 
-if(localStorage.getItem(savedSounds) == null){
+var savedSounds = JSON.parse(localStorage.getItem('savedSounds')) || [];
+if (savedSounds.length > 0) {
+  savedSounds.forEach(option => {
+    var loadItem = document.createElement("option");
+    loadItem.innerHTML = option.title;
+    loadMenu.appendChild(loadItem);
+  });
+} 
+
+/* if(localStorage.getItem(savedSounds) == null){
 var savedSounds = []} else {
   savedSounds = localStorage.getItem(savedSounds)
 };
+*/
 
 var soundId = Math.floor(Math.random() * 500000);
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
@@ -61,24 +72,8 @@ fetch(
         .then(function(soundThing) {
         console.log(soundThing.previews['preview-hq-mp3']);
 
-        //  for (j=0; j < polyphonyOptions.value; j++) {
-            var voice = document.createElement("audio");
-            voice.setAttribute("autoplay", true);
-            voice.classList.add('audioPlayer');
-            voice.id = "player" + (j + 1);
-         //   if (voice.getAttribute('src') == "") {
-              voice.setAttribute("src", soundThing.previews['preview-hq-mp3'])       
-        //    }
-         /*   if (loopCheckbox.value === "loop") {
-              voice.setAttribute("loop", true);
-            }
-            else {
-              voice.setAttribute("loop", false);
-            }
-            textAndAudio.appendChild(voice);
-            console.log(voice.id + " : " + voice.getAttribute('src'));
-          }
-        */
+        player.setAttribute("src", soundThing.previews['preview-hq-mp3'])       
+       
         })
       })
     })
@@ -91,7 +86,7 @@ saveButton.addEventListener('click', function(){
   data: globalResponse
  };
   savedSounds.push(soundsetSaveName);
-  localStorage.setItem(soundsetSaveName.title, JSON.stringify(soundsetSaveName.data));
+  localStorage.setItem("savedSounds", JSON.stringify(savedSounds));
   var loadItem = document.createElement("option");
   loadItem.innerHTML = soundsetSaveName.title;
   loadMenu.appendChild(loadItem);

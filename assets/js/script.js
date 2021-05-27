@@ -22,7 +22,7 @@ polyphonyOptions.addEventListener('change', function() {
 var wholeThing = function() {
   
 fetch(
-  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe'
+  'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 2nd API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe */
 )
   .then(function(response) {
     return response.json();
@@ -42,7 +42,7 @@ fetch(
       }
     
     fetch (
-    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
+    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe" /* 2nd API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe */
     )
       .then(function(soundThing) {
         return soundThing.json();

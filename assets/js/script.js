@@ -11,8 +11,8 @@ var loadMenu = document.getElementById("load-menu");
 var player = document.getElementById("player");
 var textAndAudioHandler = document.getElementById("text-and-audio");
 
-// Polyphony
-var polyphonyOptions = document.getElementById("polyphony-options");
+var stopGlobal = document.getElementById("stop-global");
+var playGlobal = document.getElementById("play-global");
 
 // loop checkbox
 var loopCheckbox = document.getElementById("loop-checkbox");
@@ -73,7 +73,7 @@ fetch(
         .then(function(soundThing) {
         console.log(soundThing.previews['preview-hq-mp3']);
         
-        if (counter <= polyphonyOptions.value) {
+        
           var player = document.createElement("audio");
           player.setAttribute("id", counter);
           player.autoplay = true;
@@ -83,11 +83,21 @@ fetch(
           }
           player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
           textAndAudioHandler.appendChild(player);
-          }
+          
+          // stop and play buttons
+          stopGlobal.addEventListener('click', function() {
+            player.pause();
+            player.currentTime = 0;
+          })
+          
+          playGlobal.addEventListener('click', function() {
+            player.play();
+          })
         })
       })
     })
 };
+
 
 
 saveButton.addEventListener('click', function(){

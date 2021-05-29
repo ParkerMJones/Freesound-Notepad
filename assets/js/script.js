@@ -31,7 +31,6 @@ if (savedSounds.length > 0) {
     loadMenu.appendChild(loadItem);
   });
 }
-
 var soundId = Math.floor(Math.random() * 500000);
 var randomPageNumber = Math.floor(Math.random() * 50);
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
@@ -112,7 +111,8 @@ var wholeThing = function () {
 saveButton.addEventListener('click', function () {
   var soundsetSaveName = {
     title: nameSoundset.value,
-    data: globalResponse
+    data: globalResponse,
+    keys: $`{notepad.value}`
   };
   savedSounds.push(soundsetSaveName);
   localStorage.setItem("savedSounds", JSON.stringify(savedSounds));

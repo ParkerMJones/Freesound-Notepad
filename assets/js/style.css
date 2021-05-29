@@ -35,11 +35,9 @@ html, body {
 
 .header {
     text-align: center;
-    background-color: #964572 ;
-    color: white
+    color:rgba(0, 0, 0, 0.803)
 }
 
 .header2 {
     text-align: center;
-    color: white
-}
+    color:black}

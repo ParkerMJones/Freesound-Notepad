@@ -7,13 +7,15 @@ var searchButton = document.getElementById("search-button");
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu");
+var deleteButton = document.getElementById("delete-button");
 
 // Audio Player
 var player = document.getElementById("player");
-var textAndAudioHandler = document.getElementById("text-and-audio");
+var audioplayers = document.getElementById("audio-players");
 
 var stopGlobal = document.getElementById("stop-global");
 var playGlobal = document.getElementById("play-global");
+var pauseGlobal = document.getElementById("pause-global");
 
 // loop checkbox
 var loopCheckbox = document.getElementById("loop-checkbox");
@@ -46,9 +48,7 @@ fetch(
       location.reload();
     }
     return response.json();
-    
   })
-    
   .then(function(response) {
     console.log(response);
     window.globalResponse = response;
@@ -64,6 +64,7 @@ fetch(
         
     
     counter++;
+    window.counterGlobal = counter;
 
       fetch (
       "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
@@ -83,9 +84,22 @@ fetch(
             player.loop = true;
           }
           player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
-          textAndAudioHandler.appendChild(player);
+          audioplayers.appendChild(player);
           
-          // stop and play buttons
+          // pause, stop and play buttons
+          loopCheckbox.addEventListener('click', function(){
+            if (loopCheckbox.checked === true) {
+              player.loop = true;
+            }
+            else {
+              player.loop = false;
+            }
+          }) 
+
+          pauseGlobal.addEventListener('click', function() {
+            player.pause();
+          })
+
           stopGlobal.addEventListener('click', function() {
             player.pause();
             player.currentTime = 0;
@@ -93,18 +107,21 @@ fetch(
           
           playGlobal.addEventListener('click', function() {
             player.play();
+            })
           })
         })
       })
-    })
-}
+    };
 
- 
+deleteButton.addEventListener('click', function() {
+  console.log("well, yeah, the button's working");
+  while (audioplayers.firstChild) {
+    audioplayers.lastChild.remove();
+    }
+  });
 
 
-
-
-
+ // save and load
 saveButton.addEventListener('click', function(){
   var soundsetSaveName = {
   title: nameSoundset.value,
@@ -124,7 +141,11 @@ loadMenu.addEventListener('change', function(){
 
 wholeThing();
 
-searchButton.addEventListener('click', function() { fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
+
+// search bar
+searchButton.addEventListener('click', function() { 
+
+  fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
 )
 .then(function(response) {
   if (response.status === 404) {
@@ -166,7 +187,7 @@ searchButton.addEventListener('click', function() { fetch("https://freesound.org
           player.loop = true;
         }
         player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
-        textAndAudioHandler.appendChild(player);
+        audioplayers.appendChild(player);
         
         // stop and play buttons
         stopGlobal.addEventListener('click', function() {
@@ -181,7 +202,5 @@ searchButton.addEventListener('click', function() { fetch("https://freesound.org
     })
   })
 });
-
-  
 
 

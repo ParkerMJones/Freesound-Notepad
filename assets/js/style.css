@@ -32,3 +32,14 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
+.header {
+    text-align: center;
+    background-color: #964572 ;
+    color: white
+}
+
+.header2 {
+    text-align: center;
+    color: white
+}

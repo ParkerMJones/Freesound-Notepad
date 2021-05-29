@@ -1,6 +1,7 @@
 // HTML Elements
 var notepad = document.getElementById("notepad");
-var searchTerm = document.getElementById("search-bar").value;
+var searchBar = document.getElementById("search-bar");
+var searchButton = document.getElementById("search-button");
 
 // save and load menu Element
 var nameSoundset = document.getElementById("name-soundset");
@@ -36,7 +37,7 @@ var alphabet = inputPossibilities.split(" ");
 
 // main function
 var wholeThing = function() {
-  
+
 fetch(
   'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
 )
@@ -96,7 +97,11 @@ fetch(
         })
       })
     })
-};
+}
+
+ 
+
+
 
 
 
@@ -119,7 +124,63 @@ loadMenu.addEventListener('change', function(){
 
 wholeThing();
 
+searchButton.addEventListener('click', function() { fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
+)
+.then(function(response) {
+  if (response.status === 404) {
+    location.reload();
+  }
+  return response.json();
+})
+  
+.then(function(response) {
+  console.log(response);
+  window.globalResponse = response;
 
+
+ 
+  notepad.addEventListener('input', (e) => {
+    for (i=0; i < 47; i++) {
+      if (alphabet[i].includes(e.data)) {
+          window.iGlobal = i;
+      }
+    }
+       
+  counter++;
+
+    fetch (
+    "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+    )
+      .then(function(soundThing) {
+        return soundThing.json();
+      })
+      .then(function(soundThing) {
+      console.log(soundThing.previews['preview-hq-mp3']);
+      
+      
+        var player = document.createElement("audio");
+        player.setAttribute("id", counter);
+        player.autoplay = true;
+        player.controls = true;
+        if (loopCheckbox.checked === true) {
+          player.loop = true;
+        }
+        player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+        textAndAudioHandler.appendChild(player);
+        
+        // stop and play buttons
+        stopGlobal.addEventListener('click', function() {
+          player.pause();
+          player.currentTime = 0;
+        })
+        
+        playGlobal.addEventListener('click', function() {
+          player.play();
+        })
+      })
+    })
+  })
+});
 
   
 

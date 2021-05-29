@@ -10,15 +10,18 @@
 
 <body>
   <div>
-    <h1 class="header">FreeSound Notepad</h1>
+    <h1 class="header">Freesound Notepad</h1>
 
 
-    <video src="./assets/beatsheader1.mp4" autoplay loop muted>
+  <div class="fullscreen-bg">
+    <video class="fullscreen-bg__video" src="./assets/beatsheader1.mp4" autoplay loop muted>
     </video>
-    <h4 class="header2">-Let Us Help You Find Your Beat-</h4>
-    <!-- Search Bar -->
-
   </div>
+
+    <h4 class="header2">Sonic Serendipity</h4>
+  </div>
+
+
   <div id="search-container">
     <form>
       <input type="text" placeholder="Search.." name="search" id="search-bar">
@@ -39,7 +42,9 @@
   <!-- Looping -->
   <div id="checkbox-container">
     <input type="checkbox" checked id="loop-checkbox" name="loop">
-    <label for="loop">Loop Sounds</label>
+    <label class="loop" for="loop">Loop Sounds</label>
+    <input type="checkbox" checked id="autoplay-checkbox" name="autoplay">
+    <label class="autoplay" for="autoplay">Enable Autoplay</label>
   </div>
 
   <!-- Main Text Area -->
@@ -49,10 +54,11 @@
 
   <!-- Stop Global and Play Global Button -->
   <div id="stop-and-play-global">
+    <button id="delete-button">Clear</button>
     <button id="pause-global">Pause</button>
     <button id="stop-global">Stop</button>
     <button id="play-global">Play</button>
-    <button id="delete-button">Delete All</button>
+    
   </div>
 
   <div id="audio-players">

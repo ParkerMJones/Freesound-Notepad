@@ -21,6 +21,7 @@ var pauseGlobal = document.getElementById("pause-global");
 
 // loop checkbox
 var loopCheckbox = document.getElementById("loop-checkbox");
+var autoplayCheckbox = document.getElementById("autoplay-checkbox");
 
 // local storage stuff
 var savedSounds = JSON.parse(localStorage.getItem('savedSounds')) || [];
@@ -72,8 +73,10 @@ var wholeThing = function () {
 
 
             var player = document.createElement("audio");
-            player.autoplay = false;
             player.controls = true;
+            if (autoplayCheckbox.checked === true) {
+            player.autoplay = true;
+            }
             if (loopCheckbox.checked === true) {
               player.loop = true;
             }

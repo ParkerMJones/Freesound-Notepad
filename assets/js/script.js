@@ -77,7 +77,9 @@ var wholeThing = function () {
     if (videoResponse.total_results === 0) {
       location.reload();
     }
-    
+    if (videoResponse.videos[k] === undefined) {
+      location.reload();
+    }
     bgVideo.setAttribute("src", videoResponse.videos[k].video_files[0].link);
   })
       

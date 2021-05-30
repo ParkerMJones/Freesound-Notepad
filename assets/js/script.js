@@ -6,6 +6,7 @@ var searchTerm = document.getElementById("search-bar").value;
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu");
+//var searchbtn = document.getElementById("search-button")
 
 // Audio Player
 var player = document.getElementById("player");
@@ -98,6 +99,17 @@ fetch(
     })
 };
 
+//searchbtn.addEventListener('click', function(event) {
+  //var searchSounds = console.log("searching")
+//})
+
+//var save-containerEL = document.querySelector('#save-container');
+
+//save-containerEl.innerHTML = ' ';
+
+//var producedSound = document.createElement('sound')
+//producedSound.setAttribute('src', response.data[0])
+//save-containerEl.appendChild(producedSound)});
 
 
 saveButton.addEventListener('click', function(){
@@ -115,6 +127,7 @@ saveButton.addEventListener('click', function(){
 loadMenu.addEventListener('change', function(){
   localStorage.getItem(savedSounds);
 })
+
 
 
 wholeThing();

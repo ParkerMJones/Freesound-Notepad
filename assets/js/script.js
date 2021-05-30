@@ -6,17 +6,21 @@ var searchButton = document.getElementById("search-button");
 // save and load menu Element
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
-var loadMenu = document.getElementById("load-menu"); var deleteButton = document.getElementById("delete-button");
+var loadMenu = document.getElementById("load-menu"); 
 
+// Video
 var bgVideo = document.getElementById("bg-video");
 
 // Audio Player
 var player = document.getElementById("player");
 var audioplayers = document.getElementById("audio-players");
 
+// Global Buttons
 var stopGlobal = document.getElementById("stop-global");
 var playGlobal = document.getElementById("play-global");
 var pauseGlobal = document.getElementById("pause-global");
+var deleteButton = document.getElementById("delete-button");
+var newSoundsButton = document.getElementById("new-sounds-button");
 
 
 // Checkboxes
@@ -68,6 +72,9 @@ var wholeThing = function () {
   })
   .then(function(videoResponse) {
     console.log(videoResponse);
+    if (videoResponse.total_results === 0) {
+      location.reload();
+    }
     bgVideo.setAttribute("src", videoResponse.videos[0].video_files[0].link);
   })
       
@@ -146,7 +153,7 @@ saveButton.addEventListener('click', function () {
 
 loadMenu.addEventListener('change', function () {
   localStorage.getItem(savedSounds);
-})
+});
 
 
 wholeThing();
@@ -215,6 +222,79 @@ searchButton.addEventListener('click', function () {
               player.play();
             })
           }})
+      })
+    })
+});
+
+newSoundsButton.addEventListener('click', function() {
+ document.getElementById("loader").style.visibility = 'visible';
+ 
+  fetch(
+    'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
+  )
+    .then(function (response) {
+      if (response.status === 404) {
+        location.reload();
+      }
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response);
+      window.globalResponse = response;
+      
+      document.getElementById("loader").style.visibility = 'hidden';
+      
+      notepad.addEventListener('input', (e) => {
+        for (i = 0; i < 47; i++) {
+          if (alphabet[i].includes(e.data)) {
+            window.iGlobal = i;
+          }
+        }
+
+        fetch(
+          "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+        )
+          .then(function (soundThing) {
+            return soundThing.json();
+          })
+          .then(function (soundThing) {
+            console.log(soundThing.previews['preview-hq-mp3']);
+
+
+            var player = document.createElement("audio");
+            player.controls = true;
+            if (autoplayCheckbox.checked === true) {
+            player.autoplay = true;
+            }
+            if (loopCheckbox.checked === true) {
+              player.loop = true;
+            }
+            player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+            audioplayers.appendChild(player);
+
+            // pause, stop and play buttons
+            loopCheckbox.addEventListener('click', function () {
+              if (loopCheckbox.checked === true) {
+                player.loop = true;
+              }
+              else {
+                player.loop = false;
+              }
+            })
+
+            pauseGlobal.addEventListener('click', function () {
+              player.pause();
+            })
+
+            stopGlobal.addEventListener('click', function () {
+              player.pause();
+              player.currentTime = 0;
+            })
+
+            playGlobal.addEventListener('click', function () {
+              player.play();
+            })
+          })
       })
     })
 });

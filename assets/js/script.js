@@ -232,15 +232,15 @@ newSoundsButton.addEventListener('click', function() {
   fetch(
     'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
   )
-    .then(function (response) {
-      if (response.status === 404) {
+    .then(function (response3) {
+      if (response3.status === 404) {
         location.reload();
       }
-      return response.json();
+      return response3.json();
     })
-    .then(function (response) {
-      console.log(response);
-      window.globalResponse = response;
+    .then(function (response3) {
+      console.log(response3);
+      window.globalResponse = response3;
       
       document.getElementById("loader").style.visibility = 'hidden';
       
@@ -252,13 +252,13 @@ newSoundsButton.addEventListener('click', function() {
         }
 
         fetch(
-          "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+          "https://freesound.org/apiv2/sounds/" + response3.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
         )
-          .then(function (soundThing) {
-            return soundThing.json();
+          .then(function (soundThing3) {
+            return soundThing3.json();
           })
-          .then(function (soundThing) {
-            console.log(soundThing.previews['preview-hq-mp3']);
+          .then(function (soundThing3) {
+            console.log(soundThing3.previews['preview-hq-mp3']);
 
 
             var player = document.createElement("audio");
@@ -269,7 +269,7 @@ newSoundsButton.addEventListener('click', function() {
             if (loopCheckbox.checked === true) {
               player.loop = true;
             }
-            player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+            player.setAttribute("src", soundThing3.previews['preview-hq-mp3']);
             audioplayers.appendChild(player);
 
             // pause, stop and play buttons

@@ -62,7 +62,9 @@ var wholeThing = function () {
       console.log(response);
       window.globalResponse = response;
       
-      fetch("https://api.pexels.com/videos/search?query=" + response.results[0].tags[1], {
+      k = Math.floor(Math.random() * 19);
+
+      fetch("https://api.pexels.com/videos/search?query=" + response.results[0].tags[1] + "&per_page=20", {
     headers: {
     Authorization: "563492ad6f91700001000001423d0c460fd74c83a087ce29afa13898"
   }
@@ -75,7 +77,8 @@ var wholeThing = function () {
     if (videoResponse.total_results === 0) {
       location.reload();
     }
-    bgVideo.setAttribute("src", videoResponse.videos[0].video_files[0].link);
+    
+    bgVideo.setAttribute("src", videoResponse.videos[k].video_files[0].link);
   })
       
       document.querySelector("body").style.visibility = 'visible';
@@ -161,7 +164,6 @@ wholeThing();
 
 // search bar
 searchButton.addEventListener('click', function () {
-  document.querySelector("body").style.visibility = 'hidden';
   document.getElementById("loader").style.visibility = 'visible';
   fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&page=" + randomPageNumber + "&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
   )
@@ -175,11 +177,8 @@ searchButton.addEventListener('click', function () {
     .then(function (response2) {
       console.log(response2);
       window.globalResponse = response2;
-      document.querySelector("body").style.visibility = 'visible';
-      document.querySelector("body").style.backgroundColor = 'transparent';
       document.getElementById("loader").style.visibility = 'hidden';
       
-
 
       notepad.addEventListener('input', (e) => {
         for (i = 0; i < 47; i++) {
@@ -189,7 +188,7 @@ searchButton.addEventListener('click', function () {
         }
 
         fetch(
-          "https://freesound.org/apiv2/sounds/" + response.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+          "https://freesound.org/apiv2/sounds/" + response2.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
         )
           .then(function (soundThing2) {
             return soundThing2.json();
@@ -200,12 +199,13 @@ searchButton.addEventListener('click', function () {
 
             var player = document.createElement("audio");
             if (autoplayCheckbox.checked === true) {
-              player.autoplay = true;
+            player.autoplay = true;
+            }
             player.controls = true;
             if (loopCheckbox.checked === true) {
               player.loop = true;
             }
-            player.setAttribute("src", soundThing.previews['preview-hq-mp3']);
+            player.setAttribute("src", soundThing2.previews['preview-hq-mp3']);
             audioplayers.appendChild(player);
 
             // pause, stop and play buttons
@@ -221,7 +221,7 @@ searchButton.addEventListener('click', function () {
             playGlobal.addEventListener('click', function () {
               player.play();
             })
-          }})
+          })
       })
     })
 });

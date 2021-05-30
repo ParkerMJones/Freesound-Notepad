@@ -1,3 +1,7 @@
+* {
+    font-family: sans-serif;
+}
+
 #loader {
   margin: 0 auto;
   width: 60px;
@@ -132,11 +136,12 @@ div {
     text-align: left;
 }
 
-@media (max-width: 767px) {
-    .fullscreen-bg {
-        background: url("../beatsheader1.mp4") center center / cover no-repeat;
-    }
+#black-bottom {
+    background-color: black;
+    position: relative;
 }
+
+
 
 
 

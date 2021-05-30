@@ -8,6 +8,7 @@ var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu"); var deleteButton = document.getElementById("delete-button");
 
+var bgVideo = document.getElementById("bg-video");
 
 // Audio Player
 var player = document.getElementById("player");
@@ -34,6 +35,7 @@ if (savedSounds.length > 0) {
 
 var soundId = Math.floor(Math.random() * 500000);
 var randomPageNumber = Math.floor(Math.random() * 50);
+var randomVideo = Math.floor(Math.random() * 5000) + soundId;
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
 var alphabet = inputPossibilities.split(" ");
 
@@ -42,6 +44,7 @@ var alphabet = inputPossibilities.split(" ");
 var wholeThing = function () {
  document.querySelector("body").style.visibility = 'hidden';
  document.getElementById("loader").style.visibility = 'visible';
+ 
   fetch(
     'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
   )
@@ -54,11 +57,24 @@ var wholeThing = function () {
     .then(function (response) {
       console.log(response);
       window.globalResponse = response;
+      
+      fetch("https://api.pexels.com/videos/search?query=" + response.results[0].tags[1], {
+    headers: {
+    Authorization: "563492ad6f91700001000001423d0c460fd74c83a087ce29afa13898"
+  }
+})
+  .then(function(videoResponse) {
+    return videoResponse.json();
+  })
+  .then(function(videoResponse) {
+    console.log(videoResponse);
+    bgVideo.setAttribute("src", videoResponse.videos[0].video_files[0].link);
+  })
+      
       document.querySelector("body").style.visibility = 'visible';
       document.querySelector("body").style.backgroundColor = 'transparent';
       document.getElementById("loader").style.visibility = 'hidden';
       
-
       notepad.addEventListener('input', (e) => {
         for (i = 0; i < 47; i++) {
           if (alphabet[i].includes(e.data)) {

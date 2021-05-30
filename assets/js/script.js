@@ -74,9 +74,6 @@ var wholeThing = function () {
   })
   .then(function(videoResponse) {
     console.log(videoResponse);
-    if (videoResponse.total_results === 0) {
-      location.reload();
-    }
     if (videoResponse.videos[k] === undefined) {
       location.reload();
     }

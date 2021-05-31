@@ -43,14 +43,18 @@ var randomVideo = Math.floor(Math.random() * 5000) + soundId;
 var inputPossibilities = "aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ `~ 1! 2@ 3# 4$ 5% 6^ 7& 8* 9( 0) -_ =+ \| [{ ]} ;: ' <, >. ?/";
 var alphabet = inputPossibilities.split(" ");
 
+const controller = new AbortController();
+const signal = controller.signal;
 
 // main function
 var wholeThing = function () {
  document.querySelector("body").style.visibility = 'hidden';
  document.getElementById("loader").style.visibility = 'visible';
  
+
   fetch(
-    'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
+    'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe'
+   /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
   )
     .then(function (response) {
       if (response.status === 404) {
@@ -84,6 +88,7 @@ var wholeThing = function () {
       document.querySelector("body").style.backgroundColor = 'transparent';
       document.getElementById("loader").style.visibility = 'hidden';
       
+  
       notepad.addEventListener('input', (e) => {
         for (i = 0; i < 47; i++) {
           if (alphabet[i].includes(e.data)) {
@@ -136,8 +141,10 @@ var wholeThing = function () {
             })
           })
       })
-    })
+  })
 };
+
+wholeThing();
 
 // save and load
 saveButton.addEventListener('click', function () {
@@ -198,9 +205,6 @@ loadMenu.addEventListener('change', function () {
       })
   })
 });
-
-
-wholeThing();
 
 
 // search bar
@@ -270,6 +274,7 @@ searchButton.addEventListener('click', function () {
 
 newSoundsButton.addEventListener('click', function() {
  document.getElementById("loader").style.visibility = 'visible';
+ var soundId = Math.floor(Math.random() * 500000);
  
   fetch(
     'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */

@@ -144,7 +144,6 @@ saveButton.addEventListener('click', function () {
   var soundsetSaveName = {
     title: nameSoundset.value,
     data: globalResponse,
-    keys: $`{notepad.value}`
   };
   savedSounds.push(soundsetSaveName);
   localStorage.setItem("savedSounds", JSON.stringify(savedSounds));
@@ -155,6 +154,49 @@ saveButton.addEventListener('click', function () {
 
 loadMenu.addEventListener('change', function () {
   localStorage.getItem(savedSounds);
+  notepad.addEventListener('input', (e) => {
+    for (i = 0; i < 47; i++) {
+      if (alphabet[i].includes(e.data)) {
+        window.iGlobal = i;
+      }
+    }
+
+    fetch(
+      "https://freesound.org/apiv2/sounds/" + savedSounds[0].data.results[iGlobal].id + "?preview-hq-mp3&token=GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC" /* 1st API Key: RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe*/
+    )
+      .then(function (soundThing2) {
+        return soundThing2.json();
+      })
+      .then(function (soundThing2) {
+        console.log(soundThing2.previews['preview-hq-mp3']);
+
+
+        var player = document.createElement("audio");
+        if (autoplayCheckbox.checked === true) {
+        player.autoplay = true;
+        }
+        player.controls = true;
+        if (loopCheckbox.checked === true) {
+          player.loop = true;
+        }
+        player.setAttribute("src", soundThing2.previews['preview-hq-mp3']);
+        audioplayers.appendChild(player);
+
+        // pause, stop and play buttons
+        pauseGlobal.addEventListener('click', function () {
+          player.pause();
+        })
+
+        stopGlobal.addEventListener('click', function () {
+          player.pause();
+          player.currentTime = 0;
+        })
+
+        playGlobal.addEventListener('click', function () {
+          player.play();
+        })
+      })
+  })
 });
 
 
@@ -224,6 +266,7 @@ searchButton.addEventListener('click', function () {
       })
     })
 });
+
 
 newSoundsButton.addEventListener('click', function() {
  document.getElementById("loader").style.visibility = 'visible';

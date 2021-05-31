@@ -20,7 +20,7 @@ https://somethingorother.github.io/Freesount-Notepad/
 Made with  by:
 * Parker Jones
 * Mike Barns
-* Hunert J
+* Hunert Johnson
 * Alia Collier
 
 ### ©️2021 Freesound-Notepad

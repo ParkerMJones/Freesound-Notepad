@@ -9,6 +9,8 @@ var saveButton = document.getElementById("save-button");
 var loadMenu = document.getElementById("load-menu");
 //var searchbtn = document.getElementById("search-button")
 
+var bgVideo = document.getElementById("bg-video");
+
 // Audio Player
 var player = document.getElementById("player");
 var audioplayers = document.getElementById("audio-players");
@@ -223,7 +225,9 @@ searchButton.addEventListener('click', function () {
   )
     .then(function (response2) {
       if (response2.status === 404) {
-        location.reload();
+        noResults = document.createElement("div");
+        noResults.textContent = "No Results Found";
+        document.getElementById("search-container").appendChild(noResults);
       }
       return response2.json();
     })

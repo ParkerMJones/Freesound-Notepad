@@ -98,6 +98,15 @@ var wholeThing = function () {
       document.querySelector("body").style.visibility = 'visible';
       document.querySelector("body").style.backgroundColor = 'transparent';
       document.getElementById("loader").style.visibility = 'hidden';
+      
+      notepad.addEventListener('input', (e) => {
+        for (i = 0; i < 47; i++) {
+          if (alphabet[i].includes(e.data)) {
+            window.iGlobal = i;
+          }
+        }
+        //Find this comment if you can
+    
 
      
     })
@@ -399,5 +408,3 @@ deleteButton.addEventListener('click', function () {
     audioplayers.lastChild.remove();
   }
 });
-
-

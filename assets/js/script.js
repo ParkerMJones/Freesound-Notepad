@@ -224,7 +224,7 @@ searchButton.addEventListener('click', function () {
   fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&page=" + randomPageNumber + "&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
   )
     .then(function (response2) {
-      if (response2.status === 404) {
+      if (response2.status === 404 || response2.results === undefined) {
         noResults = document.createElement("div");
         noResults.textContent = "No Results Found";
         document.getElementById("search-container").appendChild(noResults);

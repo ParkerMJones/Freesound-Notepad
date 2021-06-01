@@ -1,89 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sampler Notepad</title>       
+        <link rel="stylesheet" href="./assets/js/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sampler Notepad</title>
-  <link rel="stylesheet" href="./assets/js/style.css" />
-</head>
+    <body>
+      <div id="form-container">
+        <form>
+            <button id="search-button" type="submit">New Sounds</button>
+        </form>
+      </div>
+        
+        <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
+        <audio autoplay id="player"></audio>
+        
+    <script src="./assets/js/script.js"></script>
 
-<body>
-
-  <div id="loader">
-    <p>Loading . . .</p>
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <div class="bar4"></div>
-    <div class="bar5"></div>
-    <div class="bar6"></div>
-  </div>
-  
-  <div>
-    <h1 class="header">Freesound Notepad</h1>
-
-
-  <div class="fullscreen-bg">
-    <video class="fullscreen-bg__video" id="bg-video" autoplay loop muted>
-    </video>
-  </div>
-
-    <h4 class="header2">Sonic Serendipity</h4>
-  </div>
-
-
-  <div id="search-container">
-    <form>
-      <input type="text" placeholder="Search.." name="search" id="search-bar">
-      <button id="search-button" type="button">Search</button>
-    </form>
-  </div>
-
-  <!-- Save / Load -->
-  <div id="save-container">
-    <input type="text" placeholder="Name Soundset" id="name-soundset">
-    <button id="save-button" type="button">Save</button>
-
-    <select id="load-menu">
-      <option selected disabled>Load Soundset</option>
-    </select>
-  </div>
-
-  <!-- Looping -->
-  <div id="checkbox-container">
-    <input type="checkbox" checked id="loop-checkbox" name="loop">
-    <label class="loop" for="loop">Loop Sounds</label>
-    <input type="checkbox" checked id="autoplay-checkbox" name="autoplay">
-    <label class="autoplay" for="autoplay">Enable Autoplay</label>
-  </div>
-
-  <!-- Main Text Area -->
-  <div id="text-and-audio">
-    <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
-  </div>
-
-  <!-- Stop Global and Play Global Button -->
-  <div id="stop-and-play-global">
-    <button id="new-sounds-button">New Sounds</button>
-    <button id="delete-button">Clear</button>
-    <button id="pause-global">Pause</button>
-    <button id="stop-global">Stop</button>
-    <button id="play-global">Play</button>
-    
-  </div>
-
-  <div id="audio-players">
-
-    <!-- Audio Players Go Here-->
-
-  </div>
-  <div id="black-bottom"></div>
-
-
-
-  <script src="./assets/js/script.js"></script>
-
-</body>
-
+    </body>
 </html>

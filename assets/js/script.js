@@ -106,7 +106,7 @@ var wholeThing = function () {
 
      
     })
-};
+});
 
 notepad.addEventListener('input', (e) => {
   var response = window.globalResponse
@@ -399,4 +399,5 @@ deleteButton.addEventListener('click', function () {
   while (audioplayers.firstChild) {
     audioplayers.lastChild.remove();
   }
-});
+})
+};

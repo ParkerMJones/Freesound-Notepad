@@ -399,5 +399,9 @@ deleteButton.addEventListener('click', function () {
   while (audioplayers.firstChild) {
     audioplayers.lastChild.remove();
   }
-})
+});
+
+
+
+// lajf;lksdjg;lkasjf;ldsj;al
 };

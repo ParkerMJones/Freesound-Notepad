@@ -286,7 +286,7 @@ searchButton.addEventListener('click', function () {
 
 newSoundsButton.addEventListener('click', function () {
   document.getElementById("loader").style.visibility = 'visible';
-
+  var soundId = Math.floor(Math.random() * 500000);
   fetch(
     'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
   )

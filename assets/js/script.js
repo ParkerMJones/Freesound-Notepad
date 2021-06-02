@@ -79,34 +79,14 @@ var wholeThing = function () {
         .then(function (videoResponse) {
           console.log(videoResponse);
           if (videoResponse.videos[k] === undefined) {
-            fetch("https://api.pexels.com/videos/popular?per_page=25", {
-              headers: {
-                Authorization: "563492ad6f91700001000001423d0c460fd74c83a087ce29afa13898"
-              }
-            })
-            .then(function (videoResponse) {
-              return videoResponse.json();
-            })
-            .then(function (videoResponse) {
-              bgVideo.setAttribute("src", videoResponse.videos[k].video_files[0].link);
-          })}
-          else {
-          bgVideo.setAttribute("src", videoResponse.videos[k].video_files[0].link);
+            location.reload();
           }
+          bgVideo.setAttribute("src", videoResponse.videos[k].video_files[0].link);
         })
 
       document.querySelector("body").style.visibility = 'visible';
       document.querySelector("body").style.backgroundColor = 'transparent';
       document.getElementById("loader").style.visibility = 'hidden';
-      
-      notepad.addEventListener('input', (e) => {
-        for (i = 0; i < 47; i++) {
-          if (alphabet[i].includes(e.data)) {
-            window.iGlobal = i;
-          }
-        }
-        //Find this comment if you can
-    
 
      
     })
@@ -252,28 +232,11 @@ searchButton.addEventListener('click', function () {
   fetch("https://freesound.org/apiv2/search/text/?query=" + searchBar.value + "&page_size=47&page=" + randomPageNumber + "&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
   )
     .then(function (response2) {
-      if (response2.status === 404 || response2.count === 0) {
+      if (response2.status === 404) {
         noResults = document.createElement("div");
         noResults.textContent = "No Results Found";
         document.getElementById("search-container").appendChild(noResults);
-        document.getElementById("loader").style.visibility = 'visible';
-
-  fetch(
-    'https://freesound.org/apiv2/sounds/' + soundId + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
-  )
-    .then(function (response2) {
-      if (response2.status === 404) {
-        location.reload();
       }
-      return response2.json();
-    })
-    .then(function (response2) {
-      console.log(response2);
-      window.globalResponse = response2;
-
-      document.getElementById("loader").style.visibility = 'hidden';
-    })
-  }
       return response2.json();
     })
 

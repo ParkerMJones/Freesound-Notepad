@@ -13,7 +13,7 @@
 * 
 
 ## Website
-https://somethingorother.github.io/Freesount-Notepad/
+https://parkermjones.github.io/Freesound-Notepad/
 
 ## Contribution
 
@@ -25,4 +25,4 @@ Made with  by:
 
 ### ©️2021 Freesound-Notepad
 
-![Freesound Screenshot](https://user-images.githubusercontent.com/79668415/120129884-7ce59380-c18a-11eb-8f7e-f3bb9ddab48a.jpg)
+![Freesound Screenshot](https://user-images.githubusercontent.com/79668415/120564242-1782e400-c3d0-11eb-95b5-57a39573601c.jpg)

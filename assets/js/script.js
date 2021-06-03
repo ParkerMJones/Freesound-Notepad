@@ -6,12 +6,8 @@ var searchButton = document.getElementById("search-button");
 // save and load menu Element
 var nameSoundset = document.getElementById("name-soundset");
 var saveButton = document.getElementById("save-button");
-<<<<<<< HEAD
-var loadMenu = document.getElementById("load-menu"); 
-=======
 var loadMenu = document.getElementById("load-menu");
 //var searchbtn = document.getElementById("search-button")
->>>>>>> d1e188cfc55e996ab7d8c018ef6195130270be64
 
 var bgVideo = document.getElementById("bg-video");
 
@@ -92,9 +88,6 @@ var wholeThing = function () {
     })
 };
 
-<<<<<<< HEAD
-// save and load
-=======
 notepad.addEventListener('input', (e) => {
   var response = window.globalResponse
   for (i = 0; i < 47; i++) {
@@ -161,7 +154,6 @@ notepad.addEventListener('input', (e) => {
 //save-containerEl.appendChild(producedSound)});
 
 
->>>>>>> d1e188cfc55e996ab7d8c018ef6195130270be64
 saveButton.addEventListener('click', function () {
   var soundsetSaveName = {
     title: nameSoundset.value,

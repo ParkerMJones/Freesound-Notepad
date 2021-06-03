@@ -27,6 +27,13 @@ var newSoundsButton = document.getElementById("new-sounds-button");
 var loopCheckbox = document.getElementById("loop-checkbox");
 var autoplayCheckbox = document.getElementById("autoplay-checkbox");
 
+// Email Submission
+/*
+This code is for email submission disregard:
+var inputEmail = document.getElementById("email");
+localStorage.setItem("email", inputEmail.value);
+var storedValue = localStorage.getItem("email");
+*/
 // local storage stuff
 var savedSounds = JSON.parse(localStorage.getItem('savedSounds')) || [];
 if (savedSounds.length > 0) {
@@ -363,3 +370,10 @@ deleteButton.addEventListener('click', function () {
     audioplayers.lastChild.remove();
   }
 });
+/*
+This code is for email submission disregard:
+function store(){
+  var inputEmail = document.getElementById("email");
+  localStorage.setItem("email", inputEmail.value);
+}
+*/

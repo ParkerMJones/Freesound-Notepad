@@ -8,9 +8,11 @@
 
 * HTML
 * CSS
-* JavaScript
-* API
-* 
+* JS
+* Skeleton CSS (framework)
+* Freesound (API)
+* Pexel Images (API)
+
 
 ## Website
 https://parkermjones.github.io/Freesound-Notepad/

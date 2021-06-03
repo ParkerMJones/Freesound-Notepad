@@ -149,7 +149,30 @@ div {
 
 .subscribe {
   text-align: left;
+  color:white;
 }
 
+.label-body {
+  text-align: left;
+  color: white;
+  margin-right: 1em;
+}
 
+.button-primary {
+  text-align: left;
+  color:white; 
+}
 
+.link {
+  color: white;
+}
+
+#email {
+justify-content: left;
+}
+
+#subscribe1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25em;
+}

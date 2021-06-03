@@ -158,13 +158,18 @@ div {
   margin-right: 1em;
 }
 
-.button-primary {
+a {
   text-align: left;
   color:white; 
+  text-decoration: none;
 }
 
-.link {
-  color: white;
+.button-primary {
+  font-size: larger;
+}
+
+.link-info {
+  font-size: small;
 }
 
 #email {

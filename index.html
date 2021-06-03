@@ -1,106 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Sampler Notepad</title>
-  <link rel="stylesheet" href="./assets/js/style.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sampler Notepad</title>
+    <link rel="stylesheet" href="./assets/js/style.css" />
+  </head>
 
-<a href="" class="button-primary">FREESOUND.ORG</a>
+  <body>
+    <a href="https://freesound.org/" class="button-primary" target="_blank">FREESOUND.ORG</a>
+    <br />
+    <a href="https://freesound.org/" class="link-info" target="_blank">Click the link above to checkout the Free Sound Website!</a>
 
-  </form>
-  <div id="loader">
-    <p>Loading . . .</p>
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <div class="bar4"></div>
-    <div class="bar5"></div>
-    <div class="bar6"></div>
-  </div>
-  
-  <div>
-    <h1 class="header">Freesound Notepad</h1>
+    <div id="loader">
+      <p>Loading . . .</p>
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="bar4"></div>
+      <div class="bar5"></div>
+      <div class="bar6"></div>
+    </div>
+        
+    <div>
+      <h1 class="header">Freesound Notepad</h1>
 
+      <div class="fullscreen-bg">
+        <video class="fullscreen-bg__video" id="bg-video" autoplay loop muted></video>
+      </div>
 
-  <div class="fullscreen-bg">
-    <video class="fullscreen-bg__video" id="bg-video" autoplay loop muted>
-    </video>
-  </div>
-    <hr/>
-    <h4 class="header2">Sonic Serendipity</h4>
-  </div>
+      <hr/>
 
+      <h4 class="header2">Sonic Serendipity</h4>
+    </div>
 
-  <div id="search-container">
+    <div id="search-container">
+      <form>
+        <input type="text" placeholder="Search.." name="search" id="search-bar">
+        <button id="search-button" type="button">Search</button>
+      </form>
+    </div>
+
+    <!-- Save / Load -->
+    <div id="save-container">
+      <input type="text" placeholder="Name Soundset" id="name-soundset">
+      <button id="save-button" type="button">Save</button>
+
+      <select id="load-menu">
+        <option selected disabled>Load Soundset</option>
+      </select>
+    </div>
+
+    <!-- Looping -->
+    <div id="checkbox-container">
+      <input type="checkbox" checked id="loop-checkbox" name="loop">
+      <label class="loop" for="loop">Loop Sounds</label>
+      <input type="checkbox" checked id="autoplay-checkbox" name="autoplay">
+      <label class="autoplay" for="autoplay">Enable Autoplay</label>
+    </div>
+
+    <!-- Main Text Area -->
+    <div id="text-and-audio">
+      <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
+    </div>
+
+    <!-- Stop Global and Play Global Button -->
+    <div id="stop-and-play-global">
+      <button id="new-sounds-button" class="round-button">New Sounds</button>
+      <button id="delete-button" class="round-button">Clear</button>
+      <button id="pause-global" class="round-button">Pause</button>
+      <button id="stop-global" class="round-button">Stop</button>
+      <button id="play-global"class="round-button">Play</button>
+    </div>
+
+    <div id="audio-players">
+      <!-- Audio Players Go Here-->
+    </div>
+
+    <div id="black-bottom">
+
+    </div>
+
     <form>
-      <input type="text" placeholder="Search.." name="search" id="search-bar">
-      <button id="search-button" type="button">Search</button>
-    </form>
-  </div>
-
-  <!-- Save / Load -->
-  <div id="save-container">
-    <input type="text" placeholder="Name Soundset" id="name-soundset">
-    <button id="save-button" type="button">Save</button>
-
-    <select id="load-menu">
-      <option selected disabled>Load Soundset</option>
-    </select>
-  </div>
-
-  <!-- Looping -->
-  <div id="checkbox-container">
-    <input type="checkbox" checked id="loop-checkbox" name="loop">
-    <label class="loop" for="loop">Loop Sounds</label>
-    <input type="checkbox" checked id="autoplay-checkbox" name="autoplay">
-    <label class="autoplay" for="autoplay">Enable Autoplay</label>
-  </div>
-
-  <!-- Main Text Area -->
-  <div id="text-and-audio">
-    <textarea value="" placeholder=" // type something . . . " id="notepad"></textarea>
-  </div>
-
-  <!-- Stop Global and Play Global Button -->
-  <div id="stop-and-play-global">
-    <button id="new-sounds-button" class="round-button">New Sounds</button>
-    <button id="delete-button" class="round-button">Clear</button>
-    <button id="pause-global" class="round-button">Pause</button>
-    <button id="stop-global" class="round-button">Stop</button>
-    <button id="play-global"class="round-button">Play</button>
-    
-  </div>
-
-  <div id="audio-players">
-
-    <!-- Audio Players Go Here-->
-
-  </div>
-  <div id="black-bottom"></div>
-
-  <form>
-
-    <div class="subscribe" id="subscribe1">
-      <div>
-        <label class="subscribe">Find out when we add NEW Sounds</label>
-        <input class="width" type="text"
-        id="email" placeholder="Enter Email">
-      </div> 
-      <label> 
+      <div class="subscribe" id="subscribe1">
+        <div>
+          <label class="subscribe">Find out when we add NEW Sounds</label>
+          <input class="width" type="text"
+          id="email" placeholder="Enter Email">
+        </div>
+         
+        <label> 
           <input type="checkbox">
           <span class="label-body">Subscribe to email</span>
-      </label>
-      <input id="submit-email" class="button-primary" type="submit" value="Submit">
-    </div> 
-  </form>
+        </label>
+        <input id="submit-email" class="button-primary" type="submit" value="Submit">
+      </div> 
+    </form>
 
+    <script src="./assets/js/script.js"></script>
 
-  <script src="./assets/js/script.js"></script>
-
-</body>
-
+  </body>
 </html>

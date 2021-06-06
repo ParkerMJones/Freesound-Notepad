@@ -135,7 +135,6 @@ div {
 
 #audio-players {
     text-align: left;
-    overflow: scroll;
 }
 
 .round-button {
@@ -181,5 +180,10 @@ justify-content: left;
 }
 
 button {
+  color: white;
+}
+
+h1 a {
+  text-decoration: none;
   color: white;
 }

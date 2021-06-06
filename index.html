@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./assets/js/style.css" />
 </head>
 
-<a href="" class="button-primary">FREESOUND.ORG</a>
+<!-- <a href="" class="button-primary">FREESOUND.ORG</a> -->
 
   </form>
   <div id="loader">
@@ -24,15 +24,30 @@
   
   <div>
     <h1 class="header">Freesound Notepad</h1>
-
+    
+  <!--  <form>
+      <div class="subscribe" id="subscribe1">
+        <div>
+          <label class="subscribe">Find out when we add NEW Sounds</label>
+          <input class="width" type="text"
+          id="email" placeholder="Enter Email">
+        </div> 
+        <label> 
+            <input type="checkbox">
+            <span class="label-body">Subscribe to email</span>
+        </label>
+        <input class="button-primary" type="submit" value="Submit">
+      </div> 
+    </form>
+    -->
 
   <div class="fullscreen-bg">
     <video class="fullscreen-bg__video" id="bg-video" autoplay loop muted>
     </video>
   </div>
-    <hr/>
     <h4 class="header2">Sonic Serendipity</h4>
   </div>
+  
 
 
   <div id="search-container">
@@ -67,11 +82,11 @@
 
   <!-- Stop Global and Play Global Button -->
   <div id="stop-and-play-global">
-    <button id="new-sounds-button" class="round-button">New Sounds</button>
-    <button id="delete-button" class="round-button">Clear</button>
-    <button id="pause-global" class="round-button">Pause</button>
-    <button id="stop-global" class="round-button">Stop</button>
-    <button id="play-global"class="round-button">Play</button>
+    <button id="new-sounds-button" type="button">New Sounds</button>
+    <button id="delete-button" type="button">Clear</button>
+    <button id="pause-global" type="button">Pause</button>
+    <button id="stop-global"  type="button">Stop</button>
+    <button id="play-global" type="button">Play</button>
     
   </div>
 
@@ -80,24 +95,6 @@
     <!-- Audio Players Go Here-->
 
   </div>
-  <div id="black-bottom"></div>
-
-  <form>
-
-    <div class="subscribe" id="subscribe1">
-      <div>
-        <label class="subscribe">Find out when we add NEW Sounds</label>
-        <input class="width" type="text"
-        id="email" placeholder="Enter Email">
-      </div> 
-      <label> 
-          <input type="checkbox">
-          <span class="label-body">Subscribe to email</span>
-      </label>
-      <input class="button-primary" type="submit" value="Submit">
-    </div> 
-  </form>
-
 
   <script src="./assets/js/script.js"></script>
 

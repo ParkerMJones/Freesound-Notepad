@@ -226,7 +226,8 @@ searchButton.addEventListener('click', function () {
     .then(function (response2) {
       if (response2.status === 404) {
         noResults = document.createElement("div");
-        noResults.textContent = "No Results Found";
+        noResults.style.color = "white";
+        setInterval(function(){ noResults.textContent = "No Results Found"; }, 3000);
         document.getElementById("search-container").appendChild(noResults);
       }
       return response2.json();

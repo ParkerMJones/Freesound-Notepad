@@ -79,7 +79,7 @@ body, html {
     background-color: #1c2020;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
   }
 
 .fullscreen-bg {
@@ -125,21 +125,13 @@ body, html {
     color:white;
 }
 
-#checkbox-container {
-    color: white;
-}
-
 div {
     text-align: center;
 }
 
 #audio-players {
     text-align: left;
-}
-
-#black-bottom {
-    background-color: black;
-    position: relative;
+    overflow: scroll;
 }
 
 .round-button {
@@ -175,4 +167,15 @@ justify-content: left;
   display: flex;
   flex-wrap: wrap;
   width: 25em;
+}
+
+#checkbox-container {
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+button {
+  color: white;
 }

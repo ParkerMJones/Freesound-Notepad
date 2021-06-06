@@ -143,63 +143,41 @@ notepad.addEventListener('input', (e) => {
 saveButton.addEventListener('click', function () {
   var soundsetSaveName = {
     title: nameSoundset.value,
-    data: globalResponse,
+    target: soundId
   };
   savedSounds.push(soundsetSaveName);
   localStorage.setItem("savedSounds", JSON.stringify(savedSounds));
   var loadItem = document.createElement("option");
+  loadItem.setAttribute('value', soundsetSaveName.title);
   loadItem.innerHTML = soundsetSaveName.title;
   loadMenu.appendChild(loadItem);
 })
 
-loadMenu.addEventListener('change', function () {
-  localStorage.getItem(savedSounds);
-  notepad.addEventListener('input', (e) => {
-    for (i = 0; i < 47; i++) {
-      if (alphabet[i].includes(e.data)) {
-        window.iGlobal = i;
-      }
-    }
-
-    fetch(
-      "https://freesound.org/apiv2/sounds/" + savedSounds[0].data.results[iGlobal].id + "?preview-hq-mp3&token=RqRsqgfKWUzssyVjBxkUg9ezWKNdZzqad7v4eKbe"
-    )
-      .then(function (soundThing2) {
-        return soundThing2.json();
-      })
-      .then(function (soundThing2) {
-        console.log(soundThing2.previews['preview-hq-mp3']);
-
-
-        var player = document.createElement("audio");
-        if (autoplayCheckbox.checked === true) {
-        player.autoplay = true;
-        }
-        player.controls = true;
-        if (loopCheckbox.checked === true) {
-          player.loop = true;
-        }
-        player.setAttribute("src", soundThing2.previews['preview-hq-mp3']);
-        audioplayers.appendChild(player);
-
-        // pause, stop and play buttons
-        pauseGlobal.addEventListener('click', function () {
-          player.pause();
-        })
-
-        stopGlobal.addEventListener('click', function () {
-          player.pause();
-          player.currentTime = 0;
-        })
-
-        playGlobal.addEventListener('click', function () {
-          player.play();
-        })
-      })
-  })
-});
 
 wholeThing();
+
+loadMenu.addEventListener('change', function () {
+  document.getElementById("loader").style.visibility = 'visible';
+  localStorage.getItem(savedSounds);
+  for (i=0; i < loadMenu.length; i++) {
+    if (loadMenu.value === savedSounds[i].title) {
+
+  fetch(
+    'https://freesound.org/apiv2/sounds/' + savedSounds[i].target + '/similar/?descriptors=lowlevel.spectral_energyband_middle_high.max%20AND%20lowlevel.pitch_salience.max%20AND%20lowlevel.spectral_rms.max%20AND%20lowlevel.dissonance.max%20AND%20lowlevel.spectral_decrease.min&page=2&page_size=47&fields=id,tags&token=TKaz5zaIeVm9j1v4IFdRZvdtsTyPSc5PoqYG7aOG' /* 1st API Key: GafImFip5SoYm0xr01e4vWveTLlHqLcsHCVMlmTC */
+  )
+  .then(function (response4) {
+    if (response4.status === 404) {
+      location.reload();
+    }
+    return response4.json();
+  })
+  .then(function (response4) {
+    console.log(response4);
+    window.globalResponse = response4;
+    document.getElementById("loader").style.visibility = 'hidden';
+    })
+  }}
+});
 
 // search bar
 searchButton.addEventListener('click', function () {

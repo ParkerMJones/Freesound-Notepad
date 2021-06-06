@@ -78,8 +78,9 @@
 body, html {
     background-color: #1c2020;
     height: 100%;
+    width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
   }
 
 .fullscreen-bg {
@@ -117,6 +118,7 @@ body, html {
 .header {
     text-align: center;
     color:white;
+  
 }
 
 .header2 {
@@ -124,25 +126,65 @@ body, html {
     color:white;
 }
 
-#checkbox-container {
-    color: white;
-}
-
 div {
     text-align: center;
+}
+
+#hero form {
+  text-align: right;
 }
 
 #audio-players {
     text-align: left;
 }
 
-#black-bottom {
-    background-color: black;
-    position: relative;
+.round-button {
+    padding: 10px; 
+    border-radius: 5px;
 }
 
+.subscribe {
+  text-align: left;
+  color:white;
+}
 
+.label-body {
+  text-align: left;
+  color: white;
+  margin-right: 1em;
+}
 
+.button-primary {
+  text-align: left;
+  color:white; 
+}
 
+.link {
+  color: white;
+}
 
+#email {
+justify-content: left;
+}
 
+#subscribe1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25em;
+}
+
+#checkbox-container {
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+button {
+  color: white;
+}
+
+h1 a {
+  text-decoration: none;
+  color: white;
+}

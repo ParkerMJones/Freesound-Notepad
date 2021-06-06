@@ -4,12 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Sampler Notepad</title>
   <link rel="stylesheet" href="./assets/js/style.css" />
 </head>
 
-<body>
-
+<a href="https://freesound.org/" target="_blank" class="button-primary">Freesound.org</a>
+<!--  <form>
+      <div class="subscribe" id="subscribe1">
+        <div>
+          <label class="subscribe">Find out when we add NEW Sounds</label>
+          <input class="width" type="text"
+          id="email" placeholder="Enter Email">
+        </div> 
+        <label> 
+            <input type="checkbox">
+            <span class="label-body">Subscribe to email</span>
+        </label>
+        <input class="button-primary" type="submit" value="Submit">
+      </div> 
+    </form>
+    -->
   <div id="loader">
     <p>Loading . . .</p>
     <div class="bar1"></div>
@@ -21,16 +36,17 @@
   </div>
   
   <div>
-    <h1 class="header">Freesound Notepad</h1>
-
+    <h1 class="header"><a href ="">Freesound Notepad</a></h1>
+    
+  
 
   <div class="fullscreen-bg">
     <video class="fullscreen-bg__video" id="bg-video" autoplay loop muted>
     </video>
   </div>
-
     <h4 class="header2">Sonic Serendipity</h4>
   </div>
+  
 
 
   <div id="search-container">
@@ -65,11 +81,11 @@
 
   <!-- Stop Global and Play Global Button -->
   <div id="stop-and-play-global">
-    <button id="new-sounds-button">New Sounds</button>
-    <button id="delete-button">Clear</button>
-    <button id="pause-global">Pause</button>
-    <button id="stop-global">Stop</button>
-    <button id="play-global">Play</button>
+    <button id="new-sounds-button" type="button">New Sounds</button>
+    <button id="delete-button" type="button">Clear</button>
+    <button id="pause-global" type="button">Pause</button>
+    <button id="stop-global"  type="button">Stop</button>
+    <button id="play-global" type="button">Play</button>
     
   </div>
 
@@ -78,9 +94,6 @@
     <!-- Audio Players Go Here-->
 
   </div>
-  <div id="black-bottom"></div>
-
-
 
   <script src="./assets/js/script.js"></script>
 

@@ -129,6 +129,10 @@ div {
     text-align: center;
 }
 
+#hero form {
+  text-align: right;
+}
+
 #audio-players {
     text-align: left;
     overflow: scroll;

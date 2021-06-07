@@ -24,7 +24,7 @@ https://parkermjones.github.io/Freesound-Notepad/
 
 Made with Music 🎵 by:
 * Parker Jones
-* Mike Barns
+* Mike Barnes
 * Hunter Johnson
 * Alia Collier
 

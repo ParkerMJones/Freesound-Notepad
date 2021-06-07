@@ -1,23 +1,28 @@
 # Freesound-Notepad
 
 ## Purpose
-
-* Pulls a random set of sounds from Freesound.org and maps them to keyboard input
+* Pulls a random set of sounds from Freesound.org and maps them to keyboard input. This website also has audio controls that allow the user to create their own one-of-a-kind sound!
+* How to use:
+- Search a category or different sounds
+- Random sound is pulled from Freesound.org
+- Random videos in the background adds inspiration!
+- Save a named sound set and email to local storage
 
 ## Built With
 
 * HTML
 * CSS
 * JavaScript
-* API
-* 
+* Skeleton CSS (css framework)
+* Freesound (API)
+* Pexel Images (API)
 
 ## Website
 https://parkermjones.github.io/Freesound-Notepad/
 
 ## Contribution
 
-Made with  by:
+Made with Music 🎵 by:
 * Parker Jones
 * Mike Barns
 * Hunert Johnson
@@ -25,4 +30,4 @@ Made with  by:
 
 ### ©️2021 Freesound-Notepad
 
-![Freesound Screenshot](https://user-images.githubusercontent.com/79668415/120564242-1782e400-c3d0-11eb-95b5-57a39573601c.jpg)
+![Freesound-Notepad-Screenshot](https://user-images.githubusercontent.com/79668415/120944525-9b9fd900-c6fa-11eb-8d10-8c0ddc4b71f2.jpg)

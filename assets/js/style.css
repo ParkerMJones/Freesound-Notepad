@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 #loader {
@@ -52,12 +52,14 @@
 }
 
 #loader p {
-    color: white;
-    animation: none;
+  color: white;
+  animation: none;
 }
 
 @-webkit-keyframes delay {
-  0%, 40%, 100% {
+  0%,
+  40%,
+  100% {
     -webkit-transform: scaleY(0.05);
   }
   20% {
@@ -65,7 +67,9 @@
   }
 }
 @keyframes delay {
-  0%, 40%, 100% {
+  0%,
+  40%,
+  100% {
     transform: scaleY(0.05);
     -webkit-transform: scaleY(0.05);
   }
@@ -75,59 +79,66 @@
   }
 }
 
-body, html {
-    background-color: #1c2020;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow: scroll;
-  }
+body,
+html {
+  background-color: #1c2020;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 
 .fullscreen-bg {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
 }
 
 .fullscreen-bg__video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-       -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-	    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #notepad {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    color: rgba(255, 255, 255, 0.769);
-    background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 95%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.769);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .header {
-    text-align: center;
-    color:white;
-  
+  text-align: center;
+  color: white;
 }
 
 .header2 {
-    text-align: center;
-    color:white;
+  text-align: center;
+  color: white;
 }
 
 div {
-    text-align: center;
+  text-align: center;
 }
 
 #hero form {
@@ -135,17 +146,17 @@ div {
 }
 
 #audio-players {
-    text-align: left;
+  text-align: left;
 }
 
 .round-button {
-    padding: 10px; 
-    border-radius: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .subscribe {
   text-align: left;
-  color:white;
+  color: white;
 }
 
 .label-body {
@@ -156,7 +167,7 @@ div {
 
 .button-primary {
   text-align: left;
-  color:white; 
+  color: white;
 }
 
 .link {
@@ -164,7 +175,7 @@ div {
 }
 
 #email {
-justify-content: left;
+  justify-content: left;
 }
 
 #subscribe1 {
@@ -187,4 +198,8 @@ button {
 h1 a {
   text-decoration: none;
   color: white;
+}
+
+#bgVideoLink {
+  padding: 12px;
 }

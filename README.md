@@ -1,12 +1,14 @@
 # Freesound-Notepad
 
 ## Purpose
-* Pulls a random set of sounds from Freesound.org and maps them to keyboard input. This website also has audio controls that allow the user to create their own one-of-a-kind sound!
-* How to use:
-- Search a category or different sounds
-- Random sound is pulled from Freesound.org
-- Random videos in the background adds inspiration!
-- Save a named sound set and email to local storage
+* Pulls a random set of sounds from Freesound.org and maps them to keyboard input. Using description tags from the selected audio, fetches a (loosely) associated video to play in the background.
+* Ways to use:
+- Enter a character into the text field for a random sound
+- Use search bar to query specific terms
+- Follow link to download the associated video
+- Toggle looping and autoplay with checkboxes
+- Pause, stop, change playback speed, adjust volume, and download audio files with player audio controls
+- Save a named sound set to local storage
 
 ## Built With
 

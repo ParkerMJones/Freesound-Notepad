@@ -2,7 +2,7 @@
 
 ## Purpose
 * Pulls a random set of sounds from Freesound.org and maps them to keyboard input. Using description tags from the selected audio, fetches a (loosely) associated video to play in the background.
-* Ways to use:
+## Ways to use:
 - Enter a character into the text field for a random sound
 - Use search bar to query specific terms
 - Follow link to download the associated video
